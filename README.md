@@ -13,6 +13,7 @@
 | 3 | [RAG 与向量检索](notes/03-rag-retrieval.md) | 加载、切块、Embedding、Milvus、RAG 架构与评估 |
 | 4 | [Agent、Tool、MCP 与 Memory](notes/04-agents-memory-mcp.md) | Agent 循环、工具、短期/长期记忆、Middleware、HITL |
 | 5 | [工程实践与学习路线](notes/05-production-roadmap.md) | 测试、评估、可观测性、安全、分阶段练习 |
+| 6 | [LangGraph 状态图与持久执行](notes/06-langgraph.md) | StateGraph、路由、循环、Checkpoint、缓存、重试、流式、人工审批 |
 
 建议先按顺序阅读，再运行同主题脚本。只看 API 容易“会调用但不会设计”，只看概念又不容易发现模型兼容性、环境变量和外部服务问题。
 
@@ -67,6 +68,7 @@ Embedding 和 Milvus 示例还有额外前置条件：
 - `10` 到 `12` 号脚本依赖可访问的 Milvus；连接 URI、向量维度和距离度量必须一致。
 - `14_agent.py` 需要 Tavily 密钥；`15_mcp.py` 依赖远端 MCP 服务可用。
 - `InMemorySaver`、`InMemoryStore` 只适合学习和测试，生产环境需要数据库后端。
+- `langgraph/07_langgraph_state_save.py` 需要 `langgraph-checkpoint-sqlite`；运行产生的 `langgraph/db/state.db` 已忽略。
 
 ## 现有代码索引
 
@@ -86,6 +88,8 @@ Embedding 和 Milvus 示例还有额外前置条件：
 | `14_agent.py` | `create_agent` | [04](notes/04-agents-memory-mcp.md) |
 | `15_mcp.py` | MCP 工具接入 | [04](notes/04-agents-memory-mcp.md) |
 | `16_memory.py` | Checkpointer 短期记忆 | [04](notes/04-agents-memory-mcp.md) |
+| `langgraph/01_example.py` 到 `12_node_interrupt.py` | LangGraph 状态图、路由、持久化、缓存、重试、流式、HITL | [06](notes/06-langgraph.md) |
+| `langgraph/edge_loop.py` | 条件循环与终止条件 | [06](notes/06-langgraph.md) |
 
 ## 官方资料
 

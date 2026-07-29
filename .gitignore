@@ -9,3 +9,6 @@ wheels/
 # Virtual environments
 .venv
 .env
+
+# LangGraph example runtime data
+langgraph/db/*.db
